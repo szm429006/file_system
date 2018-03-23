@@ -6,12 +6,21 @@ $params = array_merge(
     require __DIR__ . '/params-local.php'
 );
 
+$import_config = array_merge(
+    require __DIR__ . '/import_config.php',
+    [
+        'api.controllers.*',
+        'api.models.record.*',
+        'api.models.crowd.*',
+    ]
+);
+
 return [
-    'id' => 'app-backend',
+    'id' => 'file_system_api',
     'basePath' => dirname(__DIR__),
-    'controllerNamespace' => 'backend\controllers',
-    'bootstrap' => ['log'],
+    'controllerNamespace' => 'api\controllers',
     'modules' => [],
+    'import'=> $import_config,
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-backend',
@@ -23,7 +32,7 @@ return [
         ],
         'session' => [
             // this is the name of the session cookie used for login on the backend
-            'name' => 'advanced-backend',
+            'name' => 'file_system_api',
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
