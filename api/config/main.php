@@ -10,8 +10,7 @@ $import_config = array_merge(
     require __DIR__ . '/import_config.php',
     [
         'api.controllers.*',
-        'api.models.record.*',
-        'api.models.crowd.*',
+        'api.models.*',
     ]
 );
 
